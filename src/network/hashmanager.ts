@@ -8,7 +8,7 @@ export function request_cid(key: string, limit: number, arg1: string, arg2: stri
 
         let request_data
 
-        if (arg2 == null) request_data = `${key}/${arg1}`
+        if (arg2 === null) request_data = `${key}/${arg1}`
         else request_data = `${key}/${arg1}/${arg2}`
 
         client.on("connect", () => {
@@ -25,8 +25,8 @@ export function request_cid(key: string, limit: number, arg1: string, arg2: stri
         })
 
         client.on("message", (topic, message) => {
-            if (topic == "rne/hashmanager/client/filtered_hash") {
-                const hashes = message.toString().split("/")
+            if (topic === "rne/hashmanager/client/filtered_hash") {
+                const hashes = message.toString().split("/").filter(e => e)
                 resolve(hashes)
                 client.end()
             }
@@ -52,7 +52,7 @@ export function request_metadata(hash: string): Promise<Metadata> {
         })
 
         client.on("message", (topic, message) => {
-            if (topic == "rne/hashmanager/client/hash_metadata") {
+            if (topic === "rne/hashmanager/client/hash_metadata") {
                 const split_metadata = message.toString().split("/")
                 resolve(new Metadata(hash, split_metadata[0], split_metadata[1], split_metadata[2]))
                 client.end()

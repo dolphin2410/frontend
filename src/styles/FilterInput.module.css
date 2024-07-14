@@ -1,0 +1,22 @@
+button.filter_input, input.filter_input {
+    border: 1px solid rgb(188, 188, 188) !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+button.filter_input:hover {
+    background-color: rgb(243, 249, 255);
+}
+
+.filter_input {
+    margin: 10px !important;
+    display: block !important;
+}
+
+.filter_button_input {
+    background-color: rgb(255, 255, 255);
+}
+
+.filter_date_input > input:hover, .filter_button_input:hover {
+    cursor: pointer;
+}
