@@ -22,7 +22,7 @@ export default function Home() {
 
     return (
         <ImagesContext.Provider value={{ images, setImages }}>
-            <h1>Client</h1>
+            <h1>Frontend for Client</h1>
             <ListItemButton>
                 <ListItemText onClick={() => expand ? setExpand(false) : setExpand(true)}>{expand ? <ExpandLess /> : <ExpandMore />} Filter</ListItemText>
             </ListItemButton>
@@ -34,7 +34,7 @@ export default function Home() {
             </ListItemButton>
             <Collapse in={expandIm}>
                 {images.map((e, i) => {
-                    return <img src={e[0] as string} key={i} /> 
+                    return <img style={{display:"block"}} src={e[0] as string} key={i} /> 
                 })}
             </Collapse>
         </ImagesContext.Provider>
